@@ -96,3 +96,9 @@ the device must reproduce them bit for bit. Photos are only held in RAM while th
 Built on [Ultralytics YOLO26](https://github.com/ultralytics/ultralytics),
 Espressif's [ESP-DL](https://github.com/espressif/esp-dl) and [esp-ppq](https://github.com/espressif/esp-ppq), and
 [ESP-IDF](https://github.com/espressif/esp-idf).
+
+## License
+
+[AGPL-3.0](LICENSE), matching [Ultralytics](https://github.com/ultralytics/ultralytics), which the
+training and export code build on. ESP-DL, esp-ppq and ESP-IDF, used by the firmware and the
+quantisation, keep their own licenses.
