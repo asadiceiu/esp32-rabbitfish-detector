@@ -1,0 +1,10 @@
+# Template for the full dataset: copy to dataset/data.yaml (or $RABBITFISH_DATASET/data.yaml).
+# No `path:` key on purpose: ultralytics resolves the splits relative to this file's folder.
+# All frames are 1920x1440 (4:3), YOLO-format labels.
+train: train/images   # 846 images
+val: val/images       # 264 images: picks the best epoch and the quantisation settings
+test: test/images     # 97 images from a separate survey day: final scores only, never tuned on
+
+names:
+  0: fishbody
+  1: fishhead

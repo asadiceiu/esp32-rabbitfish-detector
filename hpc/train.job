@@ -1,0 +1,26 @@
+#!/bin/bash
+#SBATCH --job-name=rabbitfish-train
+#SBATCH --time=0-01:30:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32g
+#SBATCH --gres=gpu:1
+#SBATCH --array=0
+#SBATCH --output=logs/train_%A_%a.out
+#SBATCH --error=logs/train_%A_%a.err
+
+# Trains YOLO26 detectors with scripts/train_yolo26.py, one array task per (size, imgsz).
+# The nano model at 320 px took ~32 min on an H100 (353 epochs before early stopping).
+# Pass your cluster's account and GPU partition on the command line, e.g.
+#   sbatch -A <account> -p <gpu-partition> hpc/train.job                 # task 0: the deployed model
+#   sbatch -A <account> -p <gpu-partition> --array=0-4 hpc/train.job     # all five models
+# Idempotent: finished runs are skipped, interrupted ones resume from last.pt.
+
+set -euo pipefail
+source "$(dirname "$0")/env.sh"
+
+SIZES=(n n n s m)
+IMGSZS=(320 256 640 640 640)
+i=${SLURM_ARRAY_TASK_ID:-0}
+nvidia-smi --query-gpu=name,memory.total --format=csv
+python scripts/train_yolo26.py --size "${SIZES[$i]}" --imgsz "${IMGSZS[$i]}" --batch 8

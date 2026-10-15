@@ -1,0 +1,7 @@
+# ESP32-S3 quantisation (notebook 02, scripts/esp32_export.py, scripts/probe_scores.py). Python 3.10.
+# Install PyTorch first, as in requirements.txt; blockwise reconstruction wants a CUDA GPU.
+-r requirements.txt
+esp-ppq==1.3.11           # Espressif's quantiser; its output must match the ESP-DL version in the firmware
+onnx==1.17.0
+onnxruntime==1.23.2
+onnxsim==0.4.36

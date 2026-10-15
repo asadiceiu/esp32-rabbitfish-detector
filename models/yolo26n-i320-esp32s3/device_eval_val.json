@@ -1,0 +1,31 @@
+{
+  "device": {
+    "run": "yolo26n-b8-i320",
+    "variant": "probe-320x256-w8a8-o2m-c10-box16-br"
+  },
+  "split": "val",
+  "images": 264,
+  "upload": "320x240 JPEG q92",
+  "mAP50": 0.9475428173041068,
+  "mAP50-95": 0.6396525532297777,
+  "fishbody": {
+    "mAP50": 0.9593830997513655,
+    "mAP50-95": 0.7674489986186562
+  },
+  "fishhead": {
+    "mAP50": 0.9357025348568482,
+    "mAP50-95": 0.511856107840899
+  },
+  "mean_timing_ms": {
+    "receive": 31.1,
+    "decode": 21.7,
+    "preprocess": 16.9,
+    "inference": 952.0,
+    "postprocess": 1.1
+  },
+  "mean_round_trip_ms": 1065.3,
+  "simulated_int8": {
+    "mAP50": 0.9547,
+    "mAP50-95": 0.6395
+  }
+}

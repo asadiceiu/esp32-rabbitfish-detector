@@ -1,0 +1,28 @@
+{
+ "run": "yolo26n-b8-i320",
+ "variant": "320x256-w8a8-o2m-c10-box16-br",
+ "input": {
+  "width": 320,
+  "height": 256,
+  "letterbox_pad": 114
+ },
+ "classes": [
+  "fishbody",
+  "fishhead"
+ ],
+ "strides": [
+  8,
+  16,
+  32
+ ],
+ "nms_iou": 0.7,
+ "val_mAP50-95": {
+  "float": 0.6681,
+  "int8_simulated": 0.6395
+ },
+ "val_mAP50": {
+  "float": 0.9591,
+  "int8_simulated": 0.9547
+ },
+ "self_test_image": "P7020005.jpg"
+}

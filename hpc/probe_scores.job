@@ -1,0 +1,18 @@
+#!/bin/bash
+#SBATCH --job-name=rabbitfish-probe
+#SBATCH --time=0-00:10:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32g
+#SBATCH --output=logs/probe_%j.out
+#SBATCH --error=logs/probe_%j.err
+
+# Per-image float vs simulated-int8 scores with scripts/probe_scores.py: ~2 min on CPU.
+# With --blockwise, use a GPU and ~30 min:
+#   sbatch -A <account> -p <cpu-partition> hpc/probe_scores.job --run yolo26n-b8-i320 --cls-clamp 10 --box16
+#   sbatch -A <account> -p <gpu-partition> --gres=gpu:1 --time=0:30:00 hpc/probe_scores.job \
+#       --run yolo26n-b8-i320 --cls-clamp 10 --box16 --blockwise --device cuda
+
+set -euo pipefail
+source "$(dirname "$0")/env.sh" espdl
+python scripts/probe_scores.py "$@"

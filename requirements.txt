@@ -1,0 +1,13 @@
+# Training and evaluation (notebooks 01 and 03, scripts/train_yolo26.py). Python 3.10.
+# Install PyTorch first with the build for your GPU (https://pytorch.org), e.g.
+#   pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121
+# Versions are the ones the committed results were produced with.
+torch>=2.5
+torchvision>=0.20
+ultralytics==8.4.176      # YOLO26 needs ultralytics >= 8.4
+numpy>=2.2
+opencv-python>=4.10
+pandas
+matplotlib
+pyyaml
+jupyter
